@@ -80,17 +80,17 @@ def cov_charge(data):
 # 绘制统计图表
 def plot_statistics(statistics, selected_metric, color, marker, linestyle):
     metrics = {
-        'mean_voltage': '平均电压',
-        'std_voltage': '电压标准差',
-        'std_to_mean_ratio': '标准差与平均值的比率(×1000)'
+        'mean_voltage': 'average voltage',
+        'std_voltage': 'voltage standard deviation',
+        'std_to_mean_ratio': 'The ratio of standard deviation to mean value'
     }
 
     values = [stat[selected_metric] for stat in statistics]
 
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(values, marker=marker, linestyle=linestyle, color=color)
-    ax.set_title(f'{metrics[selected_metric]} - 放电循环')
-    ax.set_xlabel('放电循环索引')
+    ax.set_title(f'{metrics[selected_metric]} - discharge cycle')
+    ax.set_xlabel('discharge cycle index')
     ax.set_ylabel(metrics[selected_metric])
     ax.grid(True)
 
@@ -105,11 +105,11 @@ def plot_voltage_curve(data, cycle_indices):
         if idx < len(data):
             time = data[idx]['data']['Time']
             voltage = data[idx]['data']['Voltage_measured']
-            ax.plot(time, voltage, label=f'循环 {idx + 1}')
+            ax.plot(time, voltage, label=f'cycle {idx + 1}')
 
-    ax.set_title('电压随时间变化曲线')
-    ax.set_xlabel('时间 (秒)')
-    ax.set_ylabel('电压 (V)')
+    ax.set_title('voltage curve')
+    ax.set_xlabel('time (S)')
+    ax.set_ylabel('voltage (V)')
     ax.legend()
     ax.grid(True)
 
