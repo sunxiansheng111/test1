@@ -165,9 +165,9 @@ def main():
             "选择统计指标",
             ('mean_voltage', 'std_voltage', 'std_to_mean_ratio'),
             format_func=lambda x: {
-                'mean_voltage': '平均电压',
-                'std_voltage': '电压标准差',
-                'std_to_mean_ratio': '标准差与平均值的比率(×1000)'
+                'mean_voltage': 'average voltage',
+                'std_voltage': 'voltage standard deviation',
+                'std_to_mean_ratio': 'The ratio of standard deviation to mean value'
             }[x]
         )
 
@@ -180,8 +180,8 @@ def main():
         st.pyplot(fig)
 
         # 电压曲线可视化
-        st.subheader('电压曲线可视化')
-        cycle_range = st.slider("选择要显示的循环范围", 1, cycles, (1, min(5, cycles)))
+        st.subheader('voltage curve')
+        cycle_range = st.slider("Select the time variation curve of the desired range of the loop to display", 1, cycles, (1, min(5, cycles)))
         start, end = cycle_range
         cycle_indices = list(range(start - 1, end))
 
